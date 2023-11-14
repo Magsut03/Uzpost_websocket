@@ -1,5 +1,6 @@
 package com.example.d8_websocket.config;
 
+import com.example.d8_websocket.dto.WSMsg;
 import com.example.d8_websocket.handler.CustomWebSocketHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,6 +25,11 @@ public class WebsocketConfig {
 
     @Bean
     public Sinks.Many<String> sink(){
+        return Sinks.many().multicast().directBestEffort();
+    }
+
+    @Bean
+    public Sinks.Many<WSMsg> sink2(){
         return Sinks.many().multicast().directBestEffort();
     }
 
